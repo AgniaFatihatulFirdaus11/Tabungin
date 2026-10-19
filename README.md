@@ -2,7 +2,7 @@
 
 Web app untuk mencatat target tabungan dengan progress yang langsung terupdate. Bisa dipasang di HP seperti aplikasi biasa, dipakai tanpa internet, dan tidak perlu membuat akun.
 
-**Demo:** https://agniafatihatulfirdaus11.github.io/Tabungin/
+**Demo:** https://agniafatihatulfirdaus11.github.io/Tabungin/ <br>
 **Demo:** https://tabunginn.netlify.app/
 ## Fitur
 

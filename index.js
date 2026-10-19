@@ -1,6 +1,9 @@
 const KEY = "tabungan-v1";
-const rupiah = n => new Intl.NumberFormat("id-ID", { style: "currency", currency: "IDR", maximumFractionDigits: 0 }).format(n);
-const esc = s => s.replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+const rupiah = n => new Intl.NumberFormat("id-ID", { 
+  style: "currency", currency: "IDR", maximumFractionDigits: 0 
+  }).format(n);
+const esc = s => s.replace(/[&<>"']/g,
+       c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
 const uid = () => Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
 
 // ---- State (sumber kebenaran tunggal) ----
