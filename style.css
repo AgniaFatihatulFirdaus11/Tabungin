@@ -161,7 +161,25 @@ ul.history li { display: flex; justify-content: space-between; align-items: cent
   padding: 10px 16px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 12px;
 }
+.nav-links { display: flex; gap: 4px; }
+.nav-links a {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 99px;
+  border: 1px solid transparent;
+}
+.nav-links a:hover { color: var(--ink); }
+.nav-links a[aria-current="page"] {
+  color: var(--ink);
+  background: var(--surface);
+  border-color: var(--line);
+}
+.nav-links a:focus-visible { outline: 3px solid var(--coin); outline-offset: 2px; }
 .brand {
   display: flex;
   align-items: center;

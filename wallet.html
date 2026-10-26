@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dompet | Tabungin</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#0A0A0C">
+<link rel="icon" href="icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="wallet.css">
+<style>
+  /* Khusus halaman dompet */
+  .balance { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 22px 20px; margin-bottom: 20px; }
+  .balance .label { color: var(--muted); font-size: .9rem; }
+  .balance .total { font-size: clamp(2rem, 8vw, 2.8rem); font-weight: 800; letter-spacing: -0.02em; line-height: 1.15; margin: 2px 0 18px; }
+
+  .strip { display: flex; gap: 2px; height: 18px; border-radius: 99px; overflow: hidden; background: var(--track); }
+  .strip span { display: block; height: 100%; min-width: 6px; }
+
+  .legend { list-style: none; margin: 18px 0 0; padding: 0; }
+  .legend li { display: grid; grid-template-columns: 12px 1fr auto 52px; align-items: center; gap: 10px; padding: 9px 0; border-top: 1px solid var(--line); font-size: .95rem; }
+  .legend .dot { width: 12px; height: 12px; border-radius: 50%; }
+  .legend .name { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .legend .amt { font-weight: 700; }
+  .legend .pct { color: var(--muted); text-align: right; }
+
+  h2.section-title { font-size: 1.15rem; margin: 28px 0 12px; }
+  .filters { display: flex; gap: 6px; margin-bottom: 8px; }
+  button.chip[aria-pressed="true"] { background: var(--fill); color: #000; border-color: var(--fill); font-weight: 700; }
+
+  .tx-list { list-style: none; margin: 0; padding: 0; background: var(--surface); border: 1px solid var(--line); border-radius: 14px; }
+  .tx-list li { display: flex; justify-content: space-between; align-items: center; gap: 12px; padding: 13px 16px; border-top: 1px solid var(--line); }
+  .tx-list li:first-child { border-top: 0; }
+  .tx-list .what { display: flex; flex-direction: column; min-width: 0; }
+  .tx-list .what b { font-weight: 700; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .tx-list .what small { color: var(--muted); font-size: .85rem; }
+  .tx-list .val { font-weight: 800; white-space: nowrap; }
+  .tx-list .val.in { color: var(--fill); }
+  .tx-list .val.out { color: var(--danger); }
+  .empty a { color: var(--fill); }
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <div class="navbar-inner">
+    <a href="./" class="brand" aria-label="Tabungin">
+      <img class="logo" src="icon-192.png" alt="" width="36" height="36">
+      <span class="brand-name">Tabungin</span>
+    </a>
+    <nav class="nav-links" aria-label="Menu utama">
+      <a href="app.html">Target</a>
+      <a href="wallet.html" aria-current="page">Dompet</a>
+    </nav>  
+  </div>
+</header>
+
+<main>
+  <h1>Dompet</h1>
+  <p class="sub">Total saldo dari semua targetmu dan seluruh riwayat transaksinya.</p>
+
+  <section class="balance" id="balance" aria-live="polite"></section>
+
+  <div class="summary" id="stats"></div>
+
+  <h2 class="section-title">Semua transaksi</h2>
+  <div class="filters" id="filters" role="group" aria-label="Filter transaksi">
+    <button type="button" class="chip" data-f="all" aria-pressed="true">Semua</button>
+    <button type="button" class="chip" data-f="in" aria-pressed="false">Setoran</button>
+    <button type="button" class="chip" data-f="out" aria-pressed="false">Penarikan</button>
+  </div>
+  <ul class="tx-list" id="txList"></ul>
+</main>
+
+<script src="wallet.js"></script>
+</body>
+</html>
